@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Proposal</title>
+    <style>
+        body {
+            text-align: center;
+            background-color: #FFD5E5;
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            color: red;
+        }
+        .buttons {
+            margin-top: 20px;
+            position: relative;
+        }
+        .btn {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            position: relative;
+            transition: all 0.3s ease-in-out;
+        }
+        .yes {
+            background-color: green;
+            color: white;
+            font-size: 18px;
+        }
+        .no {
+            background-color: red;
+            color: white;
+            font-size: 18px;
+        }
+        img {
+            width: 200px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Will you be my Valentine?</h1>
+    <div class="buttons">
+        <button class="btn yes" onclick="growYes()">Yes</button>
+        <button class="btn no" onclick="shrinkNo()">No</button>
+    </div>
+    <img src="https://stickerly.pstatic.net/sticker_pack/vqL74NWKoaquHd2ZqC8wg/JMPCUR/2/0fef2988-d4e0-4c57-afd1-85cdfae3d50d.png" alt="Cute Cat">
+
+    <script>
+        function shrinkNo() {
+            let noButton = document.querySelector('.no');
+            let yesButton = document.querySelector('.yes');
+
+            let currentSize = parseFloat(window.getComputedStyle(noButton).fontSize);
+            let newSize = currentSize * 0.8; // Shrinks by 20%
+
+            if (newSize <= 5) {
+                noButton.style.display = 'none'; // Hide button if too small
+            } else {
+                noButton.style.fontSize = newSize + 'px';
+                noButton.style.padding = (newSize / 3) + 'px ' + (newSize / 2) + 'px';
+            }
+
+            // Increase "Yes" button size
+            let currentYesSize = parseFloat(window.getComputedStyle(yesButton).fontSize);
+            yesButton.style.fontSize = (currentYesSize * 1.2) + 'px';
+            yesButton.style.padding = (currentYesSize / 3) + 'px ' + (currentYesSize / 2) + 'px';
+        }
+
+        function growYes() {
+            alert('Yay! ❤️');
+        }
+    </script>
+
+</body>
+</html>
