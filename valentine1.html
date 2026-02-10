@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Valentine Proposal</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            text-align: center;
+            background-color: #FFD5E5;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            padding: 20px;
+        }
+        h1 {
+            color: red;
+            font-size: 6vw;
+            max-width: 90%;
+        }
+        .buttons {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            width: 100%;
+        }
+        .btn {
+            padding: 12px 25px;
+            font-size: 18px;
+            border: none;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+            width: 80%;
+            max-width: 300px;
+        }
+        .yes {
+            background-color: green;
+            color: white;
+            font-size: 18px;
+        }
+        .no {
+            background-color: red;
+            color: white;
+            font-size: 18px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .hidden {
+            display: none;
+        }
+        .result {
+            font-size: 6vw;
+            color: red;
+            margin-top: 20px;
+            display: none;
+        }
+        .cat-img {
+            width: 60vw;
+            max-width: 250px;
+            margin-top: 20px;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="question">Will you be my Valentine?</h1>
+    <div class="buttons">
+        <button class="btn yes" id="yesBtn" onclick="sayYes()">Yes</button>
+        <button class="btn no" id="noBtn" onclick="changeNoText()">No</button>
+    </div>
+    <img id="catImage" class="cat-img" src="https://stickerly.pstatic.net/sticker_pack/vqL74NWKoaquHd2ZqC8wg/JMPCUR/2/0fef2988-d4e0-4c57-afd1-85cdfae3d50d.png">
+
+    <script>
+        let noTexts = [
+            "Are you sure?", 
+            "Really sure??", 
+            "Really really sure??", 
+            "Pookie please...", 
+            "If you say no, I'll be so sad :("
+        ];
+        let noClickCount = 0;
+
+        function changeNoText() {
+            let noBtn = document.getElementById("noBtn");
+            let yesBtn = document.getElementById("yesBtn");
+
+            if (noClickCount < noTexts.length) {
+                noBtn.innerText = noTexts[noClickCount]; // Change button text
+                noClickCount++;
+
+                // Make "Yes" button bigger
+                yesBtn.style.fontSize = `${18 + noClickCount * 8}px`;
+                yesBtn.style.padding = `${12 + noClickCount * 4}px ${25 + noClickCount * 4}px`;
+            } else {
+                noBtn.style.display = "none"; // Hide "No" button
+                yesBtn.style.fontSize = "50px"; // Max size for mobile
+                yesBtn.style.padding = "30px 60px";
+                yesBtn.style.width = "80%";
+            }
+        }
+
+        function sayYes() {
+            document.getElementById("question").innerText = "Knew you would say yes ❤️";
+            document.getElementById("yesBtn").style.display = "none";
+            document.getElementById("noBtn").style.display = "none";
+            document.getElementById("catImage").src = "https://i.pinimg.com/originals/b9/38/eb/b938eb0310eab17f06a88a611b0ce1f5.jpg";
+        }
+    </script>
+</body>
+</html>
